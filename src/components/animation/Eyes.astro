@@ -1,0 +1,40 @@
+---
+if (typeof window !== 'undefined') {
+  window.addEventListener("mousemove", (event) => {
+    let ojos = [
+      { ojo: document.getElementById("pupilaIzq"), cx: 70, cy: 80 },
+      { ojo: document.getElementById("pupilaDer"), cx: 130, cy: 80 }
+    ];
+
+    ojos.forEach(({ ojo, cx, cy }) => {
+      if (!ojo) return;
+      
+      let rect = ojo.getBoundingClientRect();
+      let x = event.clientX - rect.left;
+      let y = event.clientY - rect.top;
+      let dx = x - cx;
+      let dy = y - cy;
+      let distancia = Math.sqrt(dx * dx + dy * dy);
+
+      let maxDistancia = 8; // Máximo movimiento de la pupila
+      let factor = Math.min(maxDistancia / distancia, 1);
+      
+      ojo.setAttribute("cx", (cx + dx * factor).toString());
+      ojo.setAttribute("cy", (cy + dy * factor).toString());
+    });
+  });
+}
+---
+
+<svg viewBox="0 0 200 200" width="200">
+  <!-- Cabeza -->
+  <circle cx="100" cy="100" r="80" fill="#ffcc80" stroke="#e69a2a" stroke-width="3"/>
+
+  <!-- Ojos -->
+  <circle cx="70" cy="80" r="20" fill="white"/>  <!-- Ojo izquierdo -->
+  <circle cx="130" cy="80" r="20" fill="white"/> <!-- Ojo derecho -->
+
+  <!-- Pupilas -->
+  <circle id="pupilaIzq" cx="70" cy="80" r="8" fill="black"/>
+  <circle id="pupilaDer" cx="130" cy="80" r="8" fill="black"/>
+</svg>

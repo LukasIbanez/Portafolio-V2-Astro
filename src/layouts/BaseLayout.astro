@@ -1,0 +1,30 @@
+---
+import Header from "../components/Header.astro";
+import Footer from "../components/Footer.astro";
+
+const { title } = Astro.props;
+---
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{title ? title : "Mi Portafolio"}</title>
+  <meta name="description" content="Este es el portafolio de Lukas Ibáñez, donde puedes ver mis proyectos y habilidades." />
+  <style>
+    body {
+      font-family: 'Inter', 'Source Sans Pro', 'Helvetica Neue', Arial, sans-serif;
+    }
+  </style>
+</head>
+<body class="bg-[#ece0ff] ">
+    <Header></Header>
+
+    <main>
+        <slot />
+    </main>
+
+    <Footer></Footer>
+</body>
+</html>
