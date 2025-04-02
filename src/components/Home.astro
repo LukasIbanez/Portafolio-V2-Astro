@@ -1,0 +1,156 @@
+---
+// filepath: c:\Users\admin\OneDrive\Escritorio\lukasibanez\src\components\Home.astro
+
+---
+
+<div class="flex flex-col justify-center items-center h-screen bg-[#ece0ff]">
+  <!-- Título -->
+  <h1 class="welcome-text text-9xl font-bold text-slate-800">Bienvenidos</h1>
+  <!-- Subtítulo -->
+  <h2 class="subtitle-text text-6xl font-medium text-slate-600 mt-4 bg-yellow-300 px-4 py-2 rounded-lg">
+    Explora mi portafolio
+  </h2>
+</div>
+
+<!-- Contenedor de scroll lateral -->
+<div class="scroll-container h-screen w-full overflow-hidden bg-[#ece0ff]">
+  <div class="sections flex h-full w-[500vw]">
+    <!-- Sección 1 -->
+    <section class="section bg-yellow-300 flex items-center justify-center w-screen">
+      <h2 class="text-6xl font-bold text-slate-800">¡Hola! Soy Lukas Ibáñez</h2>
+    </section>
+
+    <!-- Sección 2 -->
+    <section class="section bg-blue-300 flex items-center justify-center w-screen">
+      <h2 class="text-6xl font-bold text-slate-800">Soy un Front-End Developer</h2>
+    </section>
+
+    <!-- Sección 3 -->
+    <section class="section bg-green-300 flex items-center justify-center w-screen">
+      <h2 class="text-6xl font-bold text-slate-800">Experto en HTML, CSS y JavaScript</h2>
+    </section>
+
+    <!-- Sección 4 -->
+    <section class="section bg-red-300 flex items-center justify-center w-screen">
+      <h2 class="text-6xl font-bold text-slate-800">Trabajo con frameworks como React y Vue</h2>
+    </section>
+
+    <!-- Sección 5 -->
+    <section class="section bg-purple-300 flex items-center justify-center w-screen">
+      <h2 class="text-6xl font-bold text-slate-800">¡Construyamos algo increíble juntos!</h2>
+    </section>
+  </div>
+</div>
+
+<script>
+    import { gsap } from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+// Registrar el plugin ScrollTrigger
+if (typeof window !== "undefined") {
+  gsap.registerPlugin(ScrollTrigger);
+}
+  if (typeof window !== "undefined") {
+    window.addEventListener("DOMContentLoaded", () => {
+      console.log("GSAP está funcionando");
+
+      // Función para animar palabras con efectos distintos
+      const animateWords = (container) => {
+        const words = container.textContent.split(" "); // Dividir el texto en palabras
+        container.innerHTML = ""; // Limpiar el contenido original
+
+        // Crear un span para cada palabra
+        words.forEach((word, index) => {
+          const wordSpan = document.createElement("span");
+          wordSpan.textContent = word;
+          wordSpan.style.display = "inline-block";
+          wordSpan.style.marginRight = "8px"; // Espaciado entre palabras
+          container.appendChild(wordSpan);
+
+          // Aplicar una animación distinta a cada palabra
+          gsap.fromTo(
+            wordSpan,
+            {
+              opacity: 0,
+              y: index % 2 === 0 ? -50 : 50, // Alternar dirección vertical
+              rotation: index % 3 === 0 ? -45 : 45, // Alternar rotación
+              scale: index % 4 === 0 ? 0.5 : 1.5, // Alternar escala
+            },
+            {
+              opacity: 1,
+              y: 0,
+              rotation: 0,
+              scale: 1,
+              duration: 1.5,
+              ease: "power2.out",
+              delay: index * 0.2, // Retraso progresivo
+            }
+          );
+        });
+      };
+
+      // Animar el título
+      const titleElement = document.querySelector(".welcome-text");
+      animateWords(titleElement);
+
+      // Animar el subtítulo
+      const subtitleElement = document.querySelector(".subtitle-text");
+      animateWords(subtitleElement);
+
+      // Animar las palabras en cada sección
+      document.querySelectorAll(".section h2").forEach((sectionTitle) => {
+        animateWords(sectionTitle);
+      });
+
+      // Configurar el scroll lateral
+      gsap.to(".sections", {
+        x: () => -(document.querySelector(".sections").scrollWidth - window.innerWidth), // Mover todo el contenedor
+        ease: "none",
+        scrollTrigger: {
+          trigger: ".scroll-container",
+          start: "top top",
+          end: () => `+=${document.querySelector(".sections").scrollWidth}`, // Duración del scroll
+          scrub: true, // Sincronizar con el scroll
+          pin: true, // Fijar el contenedor durante el scroll
+          anticipatePin: 1,
+        },
+      });
+
+      // Animar cada sección al entrar en la vista
+      document.querySelectorAll(".section").forEach((section, index) => {
+        gsap.fromTo(
+          section.querySelector("h2"),
+          { opacity: 0, y: 50 }, // Estado inicial
+          {
+            opacity: 1,
+            y: 0,
+            duration: 1,
+            scrollTrigger: {
+              trigger: section,
+              start: "left center", // Cuando la sección entra al centro de la vista
+              end: "right center", // Cuando la sección sale del centro
+              scrub: true, // Sincronizar con el scroll
+            },
+          }
+        );
+      });
+    });
+  }
+</script>
+
+<style>
+  .scroll-container {
+    position: relative;
+  }
+
+  .sections {
+    display: flex;
+    flex-direction: row;
+  }
+
+  .section {
+    flex: 0 0 auto;
+    height: 100vh;
+    width: 100vw;
+  }
+</style>
