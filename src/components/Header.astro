@@ -5,13 +5,13 @@
 <header class="fixed top-0 left-0 w-full mx-[1%] mt-[1%]">
     <!-- Botón de hamburguesa -->
     <div class="flex">
-      <div class="fixed z-50 left-20 h-12 flex justify-center items-center">
-        <p class="text-3xl mr-6 text-change-color-header text-slate-800">|</p>
-        <p class="text-3xl text-header-name text-change-color-header text-slate-800"> L. Ibáñez</p>
+      <div class="fixed z-[100] left-20 h-12 flex justify-center items-center">
+        <p class="text-3xl mr-6 text-change-color-header text-[#fffce1]">|</p>
+        <p class="text-3xl text-header-name text-change-color-header text-[#fffce1]"> L. Ibáñez</p>
       </div>
       <button
         id="hamburger-btn"
-        class="group fixed z-50 inline-flex w-12 h-12 text-slate-800 group-[aria-pressed=true]:text-white text-center items-center justify-center hover:cursor-pointer hover:shadow-[0_1px_0_theme(colors.slate.950/.04),0_4px_8px_theme(colors.slate.950/.12),inset_0_-2px_0_theme(colors.slate.950/.04)] transition"
+        class="group fixed z-[100] inline-flex w-12 h-12 text-[#fffce1] group-[aria-pressed=true]:text-white text-center items-center justify-center hover:cursor-pointer hover:shadow-[0_1px_0_theme(colors.slate.950/.04),0_4px_8px_theme(colors.slate.950/.12),inset_0_-2px_0_theme(colors.slate.950/.04)] transition"
         aria-pressed="false"
       >
         <span class="sr-only">Menu</span>
@@ -47,9 +47,9 @@
   
     <div
       id="menu"
-      class="fixed top-0 left-0 w-full h-full bg-gray-800 bg-opacity-90 flex items-center justify-center z-40 transition-opacity duration-300 ease-in-out opacity-0 menu-transition"
+      class="fixed z-50 top-0 left-0 w-full h-full bg-[#fffce1] bg-opacity-90 flex items-center justify-center transition-opacity duration-300 ease-in-out opacity-0 menu-transition"
     >
-      <nav class="text-white text-center w-1/3">
+      <nav class="text-black text-center w-1/3">
         <p class="text-with-lines">Lukas Ibáñez Villagrán</p>
         <ul>
           <li><a href="#home" class="block py-2">Home</a></li>
@@ -117,12 +117,12 @@
         hamburgerBtn.addEventListener('click', () => {
           const isOpen = hamburgerBtn.getAttribute('aria-pressed') === 'true';
           hamburgerBtn.setAttribute('aria-pressed', isOpen ? 'false' : 'true');
-          hamburgerBtn.classList.toggle('text-slate-800', isOpen);
-          hamburgerBtn.classList.toggle('text-white', !isOpen);
+          hamburgerBtn.classList.toggle('text-[#fffce1]', isOpen);
+          hamburgerBtn.classList.toggle('text-black', !isOpen);
   
           Array.from(txtHeaders).forEach(txtHeader => {
-            txtHeader.classList.toggle('text-slate-800', isOpen);
-            txtHeader.classList.toggle('text-white', !isOpen);
+            txtHeader.classList.toggle('text-[#fffce1]', isOpen);
+            txtHeader.classList.toggle('text-black', !isOpen);
           });
   
           if (isOpen) {

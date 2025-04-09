@@ -11,7 +11,9 @@
   "dependencies": {
     "@tailwindcss/vite": "^4.0.15",
     "astro": "^5.5.4",
-    "gsap": "^3.12.7"
+    "gsap": "^3.12.7",
+    "solid-js": "^1.9.5",
+    "three": "^0.175.0"
   },
   "devDependencies": {
     "autoprefixer": "^10.4.21",
