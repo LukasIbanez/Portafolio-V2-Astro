@@ -11,15 +11,15 @@
         </div>
         <span class="letter una-letter-a">a</span>
       </div>
-      <div class="mr-20">
-        <span class="letter">I</span>
-        <span class="letter">d</span>
-        <span class="letter">e</span>
-        <span class="letter">a</span>
+      <div class="content-idea mr-20">
+        <span class="letter idea-i">I</span>
+        <span class="letter idea-d">d</span>
+        <span class="letter idea-e">e</span>
+        <span class="letter idea-a">a</span>
       </div>
     </div>
     <div class="line line-experiencia flex items-center justify-center">
-      <div class="mr-20">
+      <div class="mr-16">
         <span class="letter experiencia-letter-e">U</span>
         <span class="letter experiencia-letter-x">n</span>
       </div>
@@ -27,11 +27,11 @@
         <span class="letter">S</span>
         <span class="letter">i</span>
         <span class="letter">t</span>
-        <span class="letter">i</span>
+        <span class="letter sitio-i">i</span>
         <span class="letter">o</span>
       </div>
     </div>
-    <div class="line- flex items-center justify-end">
+    <div class="line line-impacto flex items-center justify-end">
       <div class="mr-20">
         <span class="letter">U</span>
         <span class="letter">n</span>
@@ -60,32 +60,36 @@
         opacity: 0,
         rotateX: 180,
         y: 140,
-        duration: 0.8
+        duration: 0.4
       })
       .from(".una-image", { 
         opacity: 0,
-        y: -50,
-        duration: 0.5
-      }, "+=0.2")
+        y: -500,
+        duration: 0.6
+      })
       .to(".una-image", {
         opacity: 0,
         scale: 0.5,
-        y: -300,
+        y: -200,
         duration: 0.5,
+        transformOrigin: "center center",
+          rotation: "+=90",
+          ease: "power4.out",
         onComplete: () => {
           document.querySelector(".una-letter-n").classList.remove("hidden");
         }
-      })
+      }, "=0.2")
       .from(".una-letter-n", { 
         opacity: 0, 
         scale: 0.5, 
-        duration: 0.5 
-      }, "-=0.3")
+        duration: 0.4
+      })
       .from(".una-letter-a", { 
         opacity: 0, 
         x: -50, 
         duration: 0.5 
-      }, "+=0.2")
+      })
+      
       .add(() => {
         const svg2 = document.createElement("img");
         svg2.src = "src/assets/svg/home/svg2.svg";
@@ -112,6 +116,57 @@
           ease: "power4.out",
           repeatDelay: 0.9 
         });
+      })
+      .from(".line-experiencia", { 
+        opacity: 0, 
+        x: -100, 
+        duration: 0.6 
+      })
+      .from(".line-impacto",{
+        opacity: 0, 
+        x: 100, 
+        duration: 0.6 
+      })
+    const additionalTimeline = gsap.timeline();
+    additionalTimeline
+      .from(".text-wrapper", {
+        opacity: 0,
+        scale: 0.8,
+        duration: 1
+      })
+      .from(".idea-i", {
+        x: -200,
+        opacity: 0,
+        duration: 0.5,
+        ease: "power4.out"
+      })
+      .from(".idea-d", {
+        x: -200,
+        opacity: 0,
+        duration: 0.5,
+        ease: "power4.out"
+      }, "-=0.3")
+      .from(".idea-e", {
+        x: -200,
+        opacity: 0,
+        rotation: 360,
+        transformOrigin: "center center",
+        duration: 0.5,
+        ease: "power4.out"
+      }, "-=0.3")
+      .from(".idea-a", {
+        x: -200,
+        opacity: 0,
+        duration: 0.5,
+        ease: "power4.out"
+      }, "-=0.3")
+      .from(".sitio-i", {
+        transformOrigin: "center center",
+        rotationX: 360, // Rotación en el eje Y
+        repeat: -1,
+        duration: 1.8, 
+        ease: "power4.out",
+        repeatDelay: 1 
       });
   });
 </script>
@@ -119,7 +174,7 @@
 <style>
   .letter {
     color: #fffce1;
-    font-size: 140px;
+    font-size: 170px;
     font-weight:600;
     display: inline-block; 
     vertical-align: middle; 
@@ -132,8 +187,8 @@
   .letter-container {
     display: inline-block;
     position: relative;
-    width: 8ch; 
-    height: 12em; 
+    width: 12ch; 
+    height: 16em; 
     vertical-align: middle;
     text-align: center;
   }
