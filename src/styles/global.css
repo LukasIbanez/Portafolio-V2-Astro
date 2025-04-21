@@ -5,14 +5,14 @@
 
 /* Home Section Desarrollo */
 #desarrollo #desarrollo-content{
-    @apply grid grid-cols-1 md:grid-cols-3 gap-8 px-[5%];
+    @apply grid grid-cols-1 md:grid-cols-3 gap-8 px-[2%];
 }
 #desarrollo #desarrollo-content .contenedor-sitios{
-    @apply relative bg-gradient-to-br from-[#fffce1] via-white to-[#fffce1] px-4 py-36 flex flex-col items-center rounded-md shadow-lg;
+    @apply relative bg-gradient-to-br from-[#e1faff] via-white to-[#f7bdf8] px-8 py-24 flex flex-col items-center rounded-md shadow-lg;
 }
-#desarrollo #desarrollo-content div img{
-    @apply mb-4 w-full object-cover transition-transform transform hover:-translate-y-2 hover:shadow-2xl duration-500 ease-out;
+#desarrollo #desarrollo-content div .img-url img{
+    @apply  w-full object-cover transition-transform transform hover:-translate-y-2 hover:shadow-2xl duration-500 ease-out rounded-md border-stone-400 border-1;        
 }
-#desarrollo #desarrollo-content div a{
+#desarrollo #desarrollo-content div .texto-url{
     @apply absolute bottom-4 left-4 text-stone-400 mt-auto;
 }
