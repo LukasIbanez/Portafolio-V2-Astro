@@ -1,0 +1,116 @@
+---
+
+---
+
+<section id="quien-soy" class="quien-soy">
+    <div class="container">
+      <h2 class="title">¿Quién Soy?</h2>
+      <p class="description">
+        ¡Hola! Soy un <strong>desarrollador web full-stack</strong> apasionado por crear experiencias digitales modernas, funcionales y atractivas.
+        Me especializo en transformar ideas en soluciones tecnológicas de alto impacto.
+      </p>
+      <p class="description">
+        Tengo experiencia trabajando con tecnologías como:
+      </p>
+      <ul class="skills-list">
+        <li><i class="fab fa-js"></i> JavaScript</li>
+        <li><i class="fab fa-react"></i> React</li>
+        <li><i class="fab fa-node-js"></i> Node.js</li>
+        <li><i class="fas fa-database"></i> MongoDB & PostgreSQL</li>
+        <li><i class="fab fa-css3-alt"></i> CSS & Diseño Responsivo</li>
+      </ul>
+      <p class="description">
+        Mi enfoque está en escribir código limpio y eficiente, colaborar con equipos multidisciplinarios y compartir mi conocimiento a través de mentorías y proyectos de código abierto.
+      </p>
+    </div>
+  </section>
+  
+  <style>
+    .quien-soy {
+      padding: 4rem 2rem;
+      background: linear-gradient(135deg, #1e293b, #0f172a);
+      color: #f8fafc;
+      text-align: center;
+    }
+  
+    .container {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 2rem;
+      border-radius: 8px;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+      background: rgba(255, 255, 255, 0.05);
+    }
+  
+    .title {
+      font-size: 3rem;
+      margin-bottom: 1.5rem;
+      color: #38bdf8;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+    }
+  
+    .description {
+      font-size: 1.2rem;
+      line-height: 1.8;
+      margin-bottom: 1.5rem;
+      opacity: 0; /* Oculto inicialmente para animación */
+    }
+  
+    .skills-list {
+      list-style: none;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      gap: 1.5rem;
+      margin: 2rem 0;
+    }
+  
+    .skills-list li {
+      font-size: 1.2rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      color: #38bdf8;
+      transition: transform 0.3s ease, color 0.3s ease;
+    }
+  
+    .skills-list li:hover {
+      transform: scale(1.1);
+      color: #f8fafc;
+    }
+  
+    .skills-list i {
+      font-size: 1.5rem;
+    }
+  </style>
+  
+  <script>
+  import { onMount } from "solid-js";
+  import gsap from "gsap";
+  
+  onMount(() => {
+    const tl = gsap.timeline();
+  
+    tl.from(".title", {
+      duration: 1,
+      y: -50,
+      opacity: 0,
+      ease: "power3.out",
+    })
+      .to(".description", {
+        duration: 1,
+        opacity: 1,
+        y: 0,
+        stagger: 0.3,
+        ease: "power3.out",
+      })
+      .from(".skills-list li", {
+        duration: 1,
+        opacity: 0,
+        y: 20,
+        stagger: 0.2,
+        ease: "power3.out",
+      });
+  });
+  </script>
