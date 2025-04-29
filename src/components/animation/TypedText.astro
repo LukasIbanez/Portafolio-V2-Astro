@@ -1,0 +1,19 @@
+<p class="hero-subtitle text-lg text-[#fffce1]">
+    <span id="typed-element" class="text-4xl"></span>
+</p>
+
+<!-- Cargar typed.js desde CDN -->
+<script src="https://cdn.jsdelivr.net/npm/typed.js@2.1.0/dist/typed.umd.min.js"></script>
+
+<!-- Inicializar Typed.js -->
+<script is:inline>
+    document.addEventListener('DOMContentLoaded', () => {
+    const typed = new Typed('#typed-element', {
+        strings: ["Programador", "Full Stack", "Junior"],
+        typeSpeed: 100,
+        backSpeed: 50,
+        backDelay: 1500,
+        loop: true
+    });
+    });
+</script>

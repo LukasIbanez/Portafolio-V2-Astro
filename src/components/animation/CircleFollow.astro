@@ -1,0 +1,30 @@
+---
+---
+<div class="circle-home"></div>
+
+<script>
+    import gsap from "gsap";
+    const circle = document.querySelector('.circle-home');
+
+    document.addEventListener('mousemove', (e) => {
+        gsap.to(circle, {
+            duration: 1, // El tiempo de transición para el movimiento
+            x: e.pageX  - circle.offsetWidth * 0.5,
+            y: e.pageY  - circle.offsetHeight * 0.5,
+            ease: "power3.out", // Efecto de suavizado
+        });
+    });
+</script>
+<style>
+    
+    .circle-home {
+        position: relative;
+        width: 200px;
+        height: 200px;
+        border-radius: 50%;
+        background-color: #f5e6e6;
+        pointer-events: none;
+        transition: transform 0.1s ease;
+        filter: blur(15px);
+    }
+</style>

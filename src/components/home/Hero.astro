@@ -1,5 +1,11 @@
+---
+import TypedText from "../animation/TypedText.astro";
+import CircleFollow from '../animation/CircleFollow.astro';
+---
+<CircleFollow/>
 <div style="background: linear-gradient(to top, #fffce1, rgba(0, 0, 0, 1) 40%, black  60%);">
-  <div class="text-wrapper pb-74">
+  
+  <div class="text-wrapper pb-74 h-[900px]">
     <div id="mensaje-hero" class="relative -z-10 text-container">
       <div class="line line-una flex items-center">
         <div class="mr-20">
@@ -47,8 +53,9 @@
   
       </div>
     </div>
-    <div id="descripcion" class="text-center text-white mt-10 hidden">
-      Hola, soy Lukas Ibáñez Villagrán <br> programador computacional enfocado en el Full Stack, me encuentro desarrollando desde el año 2023, me apaciona la tecnología y el aprendizaje continuo, me gusta crear soluciones innovadoras y eficientes que mejoren la experiencia del usuario. Me gusta aprender nuevas tecnologías y mejorar mis habilidades constantemente. Me encanta trabajar en equipo y colaborar con otros desarrolladores para crear proyectos increíbles.
+    <div id="descripcion" class="h-full flex flex-col justify-center items-center text-white mt-10 hidden">
+      <h1 class="hero-title mb-4 text-7xl text-[#fffce1]">Lukas Ibáñez Villagrán</h1>
+      <TypedText client:load/>
     </div>
   </div>
 </div>
@@ -198,6 +205,7 @@
   });
 </script>
 <style>
+  
   .letter {
     color: #fffce1;
     font-size: 170px;
